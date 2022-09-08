@@ -5,13 +5,10 @@
 ####################################################################################################################################
 #                                             DISCIPLINA :  SISTEMAS DISTRIBUÍDOS                                                  #
 ####################################################################################################################################
-# Bibliotecas
-from email import message
-from operator import le
+## BIBLIOTECAS ##
 import socket
 ####################################################################################################################################
-# Funções
-
+## FUNÇÕES ##
 # Menu de opções do CRUD
 def menu():
     menu_options = """
@@ -70,6 +67,7 @@ def update_component():
     
     return id_component, name, price, quantity
 
+# Realiza a conversão das informações de update
 def convert_bytes_update(option,id_component,name,price,quantity):
     
     # Converte as opções para bytes
@@ -93,6 +91,7 @@ def convert_bytes_update(option,id_component,name,price,quantity):
     tam_pacote=len(pacote).to_bytes(2,'big')
     
     return pacote, tam_pacote
+
 # Recebe e imprime a mensagem do servidor
 def server_message():
     
@@ -127,7 +126,6 @@ dest=(ip,port)
 socket_client.connect(dest)
 
 ####################################################################################################################################
-# Aplicação
 
 option = 0
 
@@ -183,7 +181,7 @@ while option!=5:
     # OPERAÇÃO DE LEITURA #
       elif option==2:
         # Informa o id a ser lido
-         id_component= input("\tInsira o nome do componente eletrônico: ")    
+         id_component= input("\tInsira o id do componente eletrônico que desejar encontrar: ")    
         
         # Verifica se é possível realizar a conversão do id desejado
          if convert_int(id_component):
@@ -241,7 +239,7 @@ while option!=5:
       # DELETAR COMPONENTE #
       elif option==4:
           # Informa o id a ser excluido
-         id_component= input("\tInsira o nome do componente eletrônico que deseja excluir: ")  
+         id_component= input("\tInsira o id do componente eletrônico que deseja excluir: ")  
          # Verifica se é possível realizar a conversão do id desejado
          if convert_int(id_component):
              id_component = int(id_component)

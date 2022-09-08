@@ -5,12 +5,12 @@
 ####################################################################################################################################
 #                                             DISCIPLINA :  SISTEMAS DISTRIBUÍDOS                                                  #
 ####################################################################################################################################
-# Bibliotecas
+## BIBLIOTECAS ##
 import socket
 from random import randint
 
 ####################################################################################################################################
-# Variáveis globais
+## VARIAVÉIS ##
 components_list={}
 id=0
 
@@ -18,7 +18,9 @@ id=0
 # Gera um id aleatório
 def id():
     
-    return randint(0,500)
+    id = randint(0,500)
+    id = id +1
+    return id
 
 # Definição da classe dos componentes eletronicos
 class EletronicComponent:
@@ -40,7 +42,7 @@ class EletronicComponent:
          return f"ID: {self.id} | Nome: {self.name}| Valor: {self.price} | Quantidade: {self.quantity}"        
         
 ####################################################################################################################################
-# Funções
+## FUNÇÕES ##
 
 # Decodifica as mensagens enviadas pelo cliente
 def decode_message(socket_dados):
@@ -95,7 +97,6 @@ socket_server.listen(1)
 [socket_dados,info_cliente]=socket_server.accept()
 
 ####################################################################################################################################
-# Aplicação
 
 # Cria uma flag para verificar se o cliente ainda está ativo
 client_session = True
